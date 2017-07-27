@@ -22,6 +22,16 @@ body {
   background-color: $bodyBackgroundColor;
 }
 
+.selector-container {
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  select {
+    width: 10rem;
+    right: 5rem;
+  }
+}
+
 .btn {
   cursor: pointer;
 }
@@ -56,16 +66,21 @@ body {
 }
 
 .panels {
-  margin-top: 2rem;
+  margin-top: 1rem;
   .card {
-    margin: 1rem;
+    margin: 3rem;
     border-radius: 4px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
     text-align: center;
-    .label {
+    .total-label {
       margin-top: 1rem;
       font-size: 12px;
       color: #888;
+    }
+    .graphs-label {
+      margin-top: 2rem;
+      color: #555;
+      font-weight: bold;
     }
     .value {
       color: #555;
@@ -76,13 +91,45 @@ body {
     }
   }
 }
+
 my-date-picker {
   width: 10rem;
   margin: 1rem;
+  .mydp {
+    .btnclear {
+      display: none;
+    }
+    .btnpicker {
+      margin-top: 0px;
+      margin-right: 5px;
+    }
+    .headermonthtxt,.headerbtncell, .headeryeartxt{
+       background-color: transparent;
+         button {
+           background-color: transparent;
+           color: white;
+           margin-top: 1px;
+         }
+     }
+     .headertodaybtn {
+        margin-top: 1px;
+     }
+  }
 }
-form {
-  button {
-    margin-top: -5px;
+
+.sub-header {
+  @include gradient;
+  form {
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-top: -5px;
+      background-color: white;
+    }
+    label {
+      color: white;
+    }
   }
 }
 svg {
@@ -94,13 +141,6 @@ svg {
 
 .nvd3 text {
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-svg {
-  width: 100%;
-  height: 300px;
-  display: block;
-  margin: 0 auto;
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -363,8 +403,8 @@ svg.nvd3-svg {
     -moz-user-select: none;
     user-select: none;
     display: block;
-    width:100%;
-    height:100%;
+    width:90%;
+    height:20rem;
 }
 
 /********************
