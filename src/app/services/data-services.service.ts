@@ -13,11 +13,12 @@ export class DataServicesService {
 
     d3.json(utl)
       .get((err, data) => {
-        console.log(data);
         if (err) return cb(err);
         if (!data || _.isEmpty(data)) return cb('No data');
 
+        console.log(data);
         let info = this.transform(data);
+        console.log(info);
         return cb(null, info);
       });
   };
@@ -48,10 +49,16 @@ export class DataServicesService {
         amount: v.txAmount,
         txps: v.txCount,
         wallets: v.walletCount,
+        week: d.getFullYear() + '-' + this.getWeek(d),
         month: d.getFullYear() + '-' + d.getMonth()
       };
     });
   };
+
+  getWeek(d) {
+    var onejan: any = new Date(d.getFullYear(), 0, 1);
+    return Math.ceil((((d - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+  }
 
   getTotals(data) {
     function addCommas(nStr) {
@@ -146,7 +153,9 @@ export class DataServicesService {
   };
 
   show(dataSet, config) {
+
     var coords = this.getCoords(dataSet, config.graph);
+    console.log(coords);
     nv.addGraph(() => {
       var opts: any = {};
 
@@ -189,7 +198,6 @@ export class DataServicesService {
   };
 
   initGraphs(data) {
-    console.log(data);
     this.show(data, {
       graph: 'wallets',
       interval: 'perDay',
