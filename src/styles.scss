@@ -23,6 +23,7 @@ body {
 }
 
 .selector-container {
+  margin-top: 1.5rem;
   margin-right: 20px;
   display: flex;
   justify-content: flex-end;
@@ -78,7 +79,6 @@ body {
       color: #888;
     }
     .graphs-label {
-      margin-top: 2rem;
       color: #555;
       font-weight: bold;
     }
@@ -107,7 +107,7 @@ my-date-picker {
        background-color: transparent;
          button {
            background-color: transparent;
-           color: white;
+           color: $white;
            margin-top: 1px;
          }
      }
@@ -123,12 +123,17 @@ my-date-picker {
     margin-right: 20px;
     display: flex;
     justify-content: flex-end;
-    button {
-      margin-top: -5px;
-      background-color: white;
+    .dates-search {
+        margin-top: -5px;
+        color: $white;
+        border-color: $white;
+        &:hover {
+            background-color:rgba(0, 0, 0, 0.1);
+            border-color: $white;
+        }
     }
     label {
-      color: white;
+      color: $white;
     }
   }
 }
